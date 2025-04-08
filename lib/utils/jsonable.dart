@@ -3,16 +3,15 @@
 // found in the LICENSE file.
 
 import 'package:dartx/dartx.dart';
-
-import '../extensions/strings.dart';
-import 'take.dart';
+import 'package:mno_commons/extensions/strings.dart';
+import 'package:mno_commons/utils/take.dart';
 
 mixin JSONable {
   /// Serializes the object to its JSON representation.
   Map<String, dynamic>? toJson();
 }
 
-extension ListJSONableExtension on List<JSONable> {
+extension IterableJSONableExtension on Iterable<JSONable> {
   /// Serializes a list of [JSONable] into a [List<Map<String, dynamic>>].
   List<Map<String, dynamic>> toJson() =>
       this.map((it) => it.toJson()).whereNotNull().toList();
